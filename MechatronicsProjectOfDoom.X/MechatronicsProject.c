@@ -51,12 +51,14 @@ void interrupt_at_low_vector(void) {
 }
 
 /** Global Variables ***********************************************/
-char keycardCombos = {0b00110011, 0b00101010, 0b00111000};
-char buttonSeq1 = {'a', 'b', 'b', 'c'};
-char buttonSeq2 = {'b', 'c', 'a', 'a'};
-char buttonSeq3 = {'a', 'c', 'a', 'c'};
+//char keycardCombos = {0b00110011, 0b00101010, 0b00111000};
+//char buttonSeq1 = {'a', 'b', 'b', 'c'};
+//char buttonSeq2 = {'b', 'c', 'a', 'a'};
+//char buttonSeq3 = {'a', 'c', 'a', 'c'};
 
-char line1[9];
+int ir1;
+
+char line1[10];
 
 /*******************************************************************
  * Function:        void main(void)
@@ -72,30 +74,46 @@ void main(void) {
     // Pin IO Setup
     OpenADC(ADC_FOSC_8 & ADC_RIGHT_JUST & ADC_12_TAD,
             ADC_CH0 & ADC_INT_OFF & ADC_REF_VDD_VSS,
-            0x0F); // Four analog pins
-    TRISA = 0x00; // All of PORTA output
-    TRISB = 0xFF; // All of PORTB input
-    TRISC = 0x0F; // All of PORTC output
-    TRISD = 0x00; // All of PORTD output
-    PORTC = 0x00; // Turn off all 8 Port C LEDs
+            0b00001110);
+    TRISAbits.RA0 = 1;
+    TRISAbits.RA1 = 0;
+    TRISC = 0xFF;
+    TRISCbits.RC1 = 0;
+    TRISCbits.RC2 = 0;
 
     // Open LCD
-    XLCDInit();
-    XLCDClear();
+//    XLCDInit();
+//    XLCDClear();
+//    sprintf(line1, "Newhaven");
+//    XLCDL1home();
+//    XLCDPutRamString(line1);
 
     // Interrupt setup
-    RCONbits.IPEN = 1; // Put the interrupts into Priority Mode
+//    RCONbits.IPEN = 1; // Put the interrupts into Priority Mode
     // Add specific interrupts here...
 
-    INTCONbits.GIEH = 1; // Turn on high priority interrupts
-
-    // This area happens once
-    // Good for initializing and things that need to happen once
+//    INTCONbits.GIEH = 1; // Turn on high priority interrupts
 
     while (1) {
-        if(CLOSED && LOCKED){
-            // Go to input function
+        SetChanADC(ADC_CH0);
+        ConvertADC();
+        while (BusyADC());
+        ir1 = ReadADC();
+
+        if(ir1>1000){
+            Delay10KTCYx(30);
+            PORTAbits.RA1 = (ir1>1005);
         }
+//        if (!PORTCbits.RC6) {
+//            PORTCbits.RC1 = 1;
+//            PORTCbits.RC2 = 0;
+//        } else if(!PORTCbits.RC7){
+//            PORTCbits.RC1 = 0;
+//            PORTCbits.RC2 = 1;
+//        }else{
+//            PORTCbits.RC1 = 0;
+//            PORTCbits.RC2 = 0;
+//        }
     }
 }
 

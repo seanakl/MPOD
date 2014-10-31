@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED="LCD Module.c" "template with interrupts.c"
+SOURCEFILES_QUOTED_IF_SPACED="LCD Module.c" MechatronicsProject.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED="${OBJECTDIR}/LCD Module.o" "${OBJECTDIR}/template with interrupts.o"
-POSSIBLE_DEPFILES="${OBJECTDIR}/LCD Module.o.d" "${OBJECTDIR}/template with interrupts.o.d"
+OBJECTFILES_QUOTED_IF_SPACED="${OBJECTDIR}/LCD Module.o" ${OBJECTDIR}/MechatronicsProject.o
+POSSIBLE_DEPFILES="${OBJECTDIR}/LCD Module.o.d" ${OBJECTDIR}/MechatronicsProject.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/LCD\ Module.o ${OBJECTDIR}/template\ with\ interrupts.o
+OBJECTFILES=${OBJECTDIR}/LCD\ Module.o ${OBJECTDIR}/MechatronicsProject.o
 
 # Source Files
-SOURCEFILES=LCD Module.c template with interrupts.c
+SOURCEFILES=LCD Module.c MechatronicsProject.c
 
 
 CFLAGS=
@@ -97,13 +97,13 @@ ${OBJECTDIR}/LCD\ Module.o: LCD\ Module.c  nbproject/Makefile-${CND_CONF}.mk
 	@${DEP_GEN} -d "${OBJECTDIR}/LCD Module.o" 
 	@${FIXDEPS} "${OBJECTDIR}/LCD Module.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/template\ with\ interrupts.o: template\ with\ interrupts.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/MechatronicsProject.o: MechatronicsProject.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/template\ with\ interrupts.o.d 
-	@${RM} "${OBJECTDIR}/template with interrupts.o" 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo "${OBJECTDIR}/template with interrupts.o"   "template with interrupts.c" 
-	@${DEP_GEN} -d "${OBJECTDIR}/template with interrupts.o" 
-	@${FIXDEPS} "${OBJECTDIR}/template with interrupts.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	@${RM} ${OBJECTDIR}/MechatronicsProject.o.d 
+	@${RM} ${OBJECTDIR}/MechatronicsProject.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1 -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/MechatronicsProject.o   MechatronicsProject.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/MechatronicsProject.o 
+	@${FIXDEPS} "${OBJECTDIR}/MechatronicsProject.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
 else
 ${OBJECTDIR}/LCD\ Module.o: LCD\ Module.c  nbproject/Makefile-${CND_CONF}.mk
@@ -114,13 +114,13 @@ ${OBJECTDIR}/LCD\ Module.o: LCD\ Module.c  nbproject/Makefile-${CND_CONF}.mk
 	@${DEP_GEN} -d "${OBJECTDIR}/LCD Module.o" 
 	@${FIXDEPS} "${OBJECTDIR}/LCD Module.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
-${OBJECTDIR}/template\ with\ interrupts.o: template\ with\ interrupts.c  nbproject/Makefile-${CND_CONF}.mk
+${OBJECTDIR}/MechatronicsProject.o: MechatronicsProject.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/template\ with\ interrupts.o.d 
-	@${RM} "${OBJECTDIR}/template with interrupts.o" 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo "${OBJECTDIR}/template with interrupts.o"   "template with interrupts.c" 
-	@${DEP_GEN} -d "${OBJECTDIR}/template with interrupts.o" 
-	@${FIXDEPS} "${OBJECTDIR}/template with interrupts.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	@${RM} ${OBJECTDIR}/MechatronicsProject.o.d 
+	@${RM} ${OBJECTDIR}/MechatronicsProject.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/MechatronicsProject.o   MechatronicsProject.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/MechatronicsProject.o 
+	@${FIXDEPS} "${OBJECTDIR}/MechatronicsProject.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
 endif
 
